@@ -1,10 +1,153 @@
 
+'use client';
+
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Mail, Building2, MessageSquare } from 'lucide-react';
+import { Phone, Mail, Building2, MessageSquare, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { FadeIn } from '@/components/ui/fade-in';
+import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
+import { toast } from 'sonner';
+
+function ContactForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Save message to Supabase
+      const { error } = await supabase.from('contact_messages').insert([
+        {
+          name,
+          email,
+          subject,
+          message,
+          status: 'unread',
+          created_at: new Date().toISOString()
+        }
+      ]);
+      
+      if (error) throw error;
+      
+      // Also send email notification to juanrengga@gmail.com
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', `Subject: ${subject}\n\n${message}`);
+      formData.append('_captcha', 'false');
+      formData.append('_subject', `Contact Form: ${subject}`);
+      
+      // Use FormSubmit.co service to send email
+      await fetch('https://formsubmit.co/juanrengga@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+      
+      toast.success('Pesan berhasil dikirim!', {
+        description: 'Kami akan segera menghubungi Anda.',
+        duration: 5000,
+        position: 'top-center',
+        action: {
+          label: 'OK',
+          onClick: () => console.log('Notification acknowledged')
+        },
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Gagal mengirim pesan', {
+        description: 'Silakan coba lagi nanti.',
+        duration: 5000,
+        position: 'top-center',
+        action: {
+          label: 'Tutup',
+          onClick: () => console.log('Error notification closed')
+        },
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Nama</label>
+              <input
+                  id="name"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Masukkan nama Anda"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+              />
+          </div>
+          <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
+              <input
+                  id="email"
+                  type="email"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="contoh@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+              />
+          </div>
+      </div>
+      <div className="space-y-2">
+          <label htmlFor="subject" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subjek</label>
+          <input
+              id="subject"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Subjek pesan"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              required
+          />
+      </div>
+      <div className="space-y-2">
+          <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pesan</label>
+          <textarea
+              id="message"
+              className="flex min-h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Tulis pesan Anda di sini..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+          ></textarea>
+      </div>
+      <button 
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+      >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Mengirim...
+            </>
+          ) : (
+            'Kirim Pesan'
+          )}
+      </button>
+    </form>
+  );
+}
 
 interface WhatsAppLineType {
   type: 'whatsapp';
@@ -159,49 +302,7 @@ export default function KontakPage() {
                                 <CardTitle>Hubungi Kami</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <form className="space-y-4">
-                                    <div className="grid gap-4 sm:grid-cols-2">
-                                        <div className="space-y-2">
-                                            <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Nama</label>
-                                            <input
-                                                id="name"
-                                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                                placeholder="Masukkan nama Anda"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
-                                            <input
-                                                id="email"
-                                                type="email"
-                                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                                placeholder="contoh@email.com"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="subject" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subjek</label>
-                                        <input
-                                            id="subject"
-                                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                            placeholder="Subjek pesan"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pesan</label>
-                                        <textarea
-                                            id="message"
-                                            className="flex min-h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                            placeholder="Tulis pesan Anda di sini..."
-                                        ></textarea>
-                                    </div>
-                                    <button 
-                                        type="submit"
-                                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-                                    >
-                                        Kirim Pesan
-                                    </button>
-                                </form>
+                                <ContactForm />
                             </CardContent>
                         </Card>
                       </FadeIn>

@@ -56,10 +56,26 @@ export function ContactSection() {
       setSubject('');
       setMessage('');
       
-      toast.success('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.');
+      toast.success('Pesan berhasil dikirim!', {
+        description: 'Kami akan segera menghubungi Anda.',
+        duration: 5000,
+        position: 'top-center',
+        action: {
+          label: 'OK',
+          onClick: () => console.log('Notification acknowledged')
+        },
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error('Gagal mengirim pesan. Silakan coba lagi nanti.');
+      toast.error('Gagal mengirim pesan', {
+        description: 'Silakan coba lagi nanti.',
+        duration: 5000,
+        position: 'top-center',
+        action: {
+          label: 'Tutup',
+          onClick: () => console.log('Error notification closed')
+        },
+      });
     } finally {
       setIsSubmitting(false);
     }

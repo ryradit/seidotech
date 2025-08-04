@@ -26,7 +26,7 @@ export function PortfolioSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchProjects = async (retryCount = 0) => {
       setLoading(true);
       try {
         const { data, error } = await supabase
@@ -34,7 +34,16 @@ export function PortfolioSection() {
           .select('*')
           .order('createdAt', { ascending: false })
           .limit(4);
-        if (error) throw error;
+        
+        if (error) {
+          if (retryCount < 3) {
+            console.log(`Retry attempt ${retryCount + 1} for fetching portfolios...`);
+            setTimeout(() => fetchProjects(retryCount + 1), 1000 * (retryCount + 1));
+            return;
+          }
+          throw error;
+        }
+        
         setProjects(data || []);
       } catch (error) {
         console.error('Error fetching projects: ', error);

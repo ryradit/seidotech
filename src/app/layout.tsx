@@ -3,6 +3,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import { Toaster as SonnerToaster } from "sonner";
 import { Chatbot } from '@/components/chatbot';
 import { AuthProvider } from '@/hooks/use-auth';
 import { usePathname } from 'next/navigation';
@@ -24,6 +25,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
     <>
       {children}
       <Toaster />
+      <SonnerToaster position="top-center" richColors closeButton />
       {!isAdminPage && <Chatbot />}
     </>
   );

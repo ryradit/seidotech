@@ -30,14 +30,22 @@ export function MitraSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMitras = async () => {
+    const fetchMitras = async (retryCount = 0) => {
       try {
         const { data, error } = await supabase
           .from('mitras')
           .select('*')
           .order('createdAt', { ascending: false });
         
-        if (error) throw error;
+        if (error) {
+          if (retryCount < 3) {
+            console.log(`Retry attempt ${retryCount + 1} for fetching mitras...`);
+            setTimeout(() => fetchMitras(retryCount + 1), 1000 * (retryCount + 1));
+            return;
+          }
+          throw error;
+        }
+        
         setMitras(data || []);
       } catch (error) {
         console.error('Error fetching mitras:', error);
