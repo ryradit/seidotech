@@ -52,13 +52,7 @@ export function Header() {
              <Button variant="ghost" size="icon" onClick={handleLogout} aria-label="Logout" className="hidden sm:flex">
                 <LogOut className="h-5 w-5" />
             </Button>
-          ) : (
-            <Link href="/admin/login" prefetch={false} className="hidden sm:block">
-              <Button variant="ghost" size="icon" aria-label="Admin Login">
-                  <Shield className="h-5 w-5" />
-              </Button>
-            </Link>
-          )}
+          ) : null}
 
           <Link href="/kontak" prefetch={false} className="hidden sm:block">
             <Button>Hubungi Kami</Button>
@@ -91,12 +85,7 @@ export function Header() {
                             Logout
                         </Button>
                        </>
-                    ) : (
-                        <Link href="/admin/login" className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground hover:bg-accent" prefetch={false}>
-                            <Shield className="h-5 w-5" />
-                            Admin
-                        </Link>
-                    )}
+                    ) : null}
                 </nav>
               </div>
             </SheetContent>
