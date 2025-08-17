@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .carousel-container {
+    @apply relative overflow-hidden;
+    perspective: 1000px;
+  }
+
+  .carousel-slide {
+    @apply transform-gpu transition-all duration-500;
+    transform-style: preserve-3d;
+  }
+
+  .carousel-slide-inactive {
+    @apply transform-gpu scale-90 opacity-80;
+    transform: translateZ(-100px);
+  }
+
+  .carousel-slide-active {
+    @apply transform-gpu z-10;
+    transform: translateZ(0);
+  }
+
+  .carousel-item {
+    @apply relative overflow-hidden rounded-lg shadow-xl transition-all duration-300;
+  }
+
+  .carousel-item:hover {
+    @apply shadow-2xl;
+    transform: translateY(-4px);
+  }
+}

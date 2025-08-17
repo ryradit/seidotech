@@ -1,0 +1,21 @@
+{
+  "name": "PT. Seido Mitra Abadi",
+  "short_name": "Seido",
+  "description": "Solusi Manufaktur & Engineering: Jasa Bubut CNC, Molding, dan Fabrikasi Conveyor",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "icons": [
+    {
+      "src": "/seidoicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/seidoiconnobg2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
