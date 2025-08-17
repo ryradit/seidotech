@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth } from '../../hooks/use-auth';
 import { useAdminNavbar } from './use-admin-navbar';
 import { useState, useEffect } from 'react';
 import { 
@@ -15,12 +15,12 @@ import {
   SidebarGroupLabel,
   SidebarGroupContent,
   useSidebar
-} from '@/components/ui/sidebar';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+} from '../ui/sidebar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
+import { Separator } from '../ui/separator';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { 
   Home, 
   LogOut, 
@@ -39,7 +39,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '../../lib/supabase';
 import Image from 'next/image';
 
 interface AdminNavbarProps {

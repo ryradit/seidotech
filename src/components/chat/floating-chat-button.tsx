@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '../ui/dialog';
 
 export function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false);
