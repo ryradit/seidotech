@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import { Clock } from 'lucide-react';
-import { type Post } from '@/lib/blog';
+import { type Post } from '../../../lib/blog';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { POST_CATEGORIES } from '@/lib/constants';
+import { Badge } from '../../../components/ui/badge';
+import { POST_CATEGORIES } from '../../../lib/constants';
 
 interface PostListItemProps {
   post: Post;

@@ -1,15 +1,15 @@
 
 'use client';
 
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { FloatingChatButton } from '@/components/chat/floating-chat-button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Header } from '../../components/header';
+import { Footer } from '../../components/footer';
+import { FloatingChatButton } from '../../components/chat/floating-chat-button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Phone, Mail, Building2, MessageSquare, Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { FadeIn } from '@/components/ui/fade-in';
+import { FadeIn } from '../../components/ui/fade-in';
 import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { toast } from 'sonner';
 
 function ContactForm() {
