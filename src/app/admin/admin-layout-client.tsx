@@ -1,10 +1,10 @@
 'use client';
 
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth } from '../../hooks/use-auth';
 import { usePathname } from 'next/navigation';
-import { AdminNavbar } from '@/components/admin/admin-navbar';
-import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { AdminNavbar } from '../../components/admin/admin-navbar';
+import { SidebarProvider, SidebarTrigger, SidebarInset } from '../../components/ui/sidebar';
+import { TooltipProvider } from '../../components/ui/tooltip';
 
 function AdminLayoutContent({ children }: { children: React.ReactNode }) {
   return (
