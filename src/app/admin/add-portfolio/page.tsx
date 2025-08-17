@@ -1,7 +1,7 @@
 
 'use client';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { PortfolioForm } from '@/components/portfolio-form';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
+import { PortfolioForm } from '../../../components/portfolio-form';
 
 export default function AddPortfolioPage() {
   return (

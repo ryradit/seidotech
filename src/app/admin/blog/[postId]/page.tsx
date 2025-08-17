@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Post, createPost, updatePost, getPostById } from '@/lib/blog';
-import { getRandomSuggestions, type ArticleSuggestion } from '@/lib/blogSuggestions';
-import { generateExcerpt, generateContent } from '@/lib/aiSuggestions';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Post, createPost, updatePost, getPostById } from '../../../../lib/blog';
+import { getRandomSuggestions, type ArticleSuggestion } from '../../../../lib/blogSuggestions';
+import { generateExcerpt, generateContent } from '../../../../lib/aiSuggestions';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { Label } from '../../../../components/ui/label';
+import { Textarea } from '../../../../components/ui/textarea';
 import RichTextEditor from '../components/RichTextEditor';
 import {
   Select,
@@ -16,8 +16,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { slugify } from '@/lib/utils';
+} from '../../../../components/ui/select';
+import { slugify } from '../../../../lib/utils';
 import { toast } from 'sonner';
 
 export default function BlogPostEditor() {
