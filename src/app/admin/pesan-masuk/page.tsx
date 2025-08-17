@@ -1,17 +1,17 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "../../../components/ui/card";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { Textarea } from "../../../components/ui/textarea";
+import { Avatar, AvatarFallback } from "../../../components/ui/avatar";
 import { MessageSquare, Send, Clock, Mail, RefreshCw, ChevronDown, ChevronUp } from "lucide-react";
 import { format, formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
 import { toast } from "sonner";
-import { supabase } from "@/lib/supabase";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { supabase } from "../../../lib/supabase";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import {
   Dialog,
   DialogContent,
@@ -19,9 +19,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
-import { useAuth } from "@/hooks/use-auth";
+} from "../../../components/ui/dialog";
+import { Separator } from "../../../components/ui/separator";
+import { useAuth } from "../../../hooks/use-auth";
 
 interface Message {
   id: string;

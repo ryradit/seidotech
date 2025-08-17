@@ -2,10 +2,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '../../../lib/supabase';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '../../../components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Loader2, Trash2, PlusCircle, Pencil } from 'lucide-react';
 import {
   AlertDialog,
@@ -17,10 +17,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { useToast } from '@/hooks/use-toast';
+} from "../../../components/ui/alert-dialog";
+import { useToast } from '../../../hooks/use-toast';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '../../../components/ui/badge';
 
 interface Project {
   id: string;
