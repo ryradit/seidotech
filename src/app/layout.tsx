@@ -2,13 +2,13 @@
 'use client';
 import type {Metadata} from 'next';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "../components/ui/toaster"
 import { Toaster as SonnerToaster } from "sonner";
-import { Chatbot } from '@/components/chatbot';
-import { AuthProvider } from '@/hooks/use-auth';
+import { Chatbot } from '../components/chatbot';
+import { AuthProvider } from '../hooks/use-auth';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
-import { recordPageView } from '@/lib/page-views';
+import { recordPageView } from '../lib/page-views';
 
 // Hapus metadata dari sini karena akan dikelola di komponen
 // export const metadata: Metadata = {

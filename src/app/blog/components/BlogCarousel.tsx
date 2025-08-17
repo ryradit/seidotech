@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { type Post } from "@/lib/blog"
+import { type Post } from "../../../lib/blog"
 import { Play, Pause, Clock } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../../lib/utils"
 
 interface BlogCarouselProps {
   featuredPosts: Post[]

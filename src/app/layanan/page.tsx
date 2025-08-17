@@ -1,16 +1,16 @@
 
 'use client';
 
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Header } from '../../components/header';
+import { Footer } from '../../components/footer';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "../../components/ui/card";
 import { Cog, Layers, Truck, X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { FadeIn } from '@/components/ui/fade-in';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { FadeIn } from '../../components/ui/fade-in';
+import { Button } from '../../components/ui/button';
+import { Dialog, DialogContent, DialogClose } from "../../components/ui/dialog";
 import { useState } from 'react';
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "../../components/ui/badge";
 
 const bubutServices = [
   { name: "Jasa Bubut CNC", hint: "CNC lathe", description: "Layanan pemotongan presisi menggunakan mesin bubut CNC.", imageUrl: "/cnc1.jpg" },

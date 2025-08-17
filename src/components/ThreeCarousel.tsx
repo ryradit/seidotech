@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 import { Canvas, useThree } from '@react-three/fiber';
 import { Image, Environment } from '@react-three/drei';
 import { easing } from 'maath';
-import { type Post } from '@/lib/blog';
+import { type Post } from '../lib/blog';
 
 const GOLDEN_RATIO = 1.61803398875;
 

@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
 import { CalendarIcon, User } from "lucide-react"
 import Image from "next/image"
-import { formatDate } from "@/lib/utils"
-import { type Post } from "@/lib/blog"
+import { formatDate } from "../../../lib/utils"
+import { type Post } from "../../../lib/blog"
 
 interface BlogGridProps {
   posts: Post[]

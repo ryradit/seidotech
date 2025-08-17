@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getPageViewStats, subscribeToPageViews } from "@/lib/page-views";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { getPageViewStats, subscribeToPageViews } from "../../lib/page-views";
 import { BarChart, Activity, Users, Eye, ArrowUp, ArrowDown, LineChart } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
-import { cn } from "@/lib/utils";
+import { Progress } from "../ui/progress";
+import { cn } from "../../lib/utils";
 
 export function WebsiteStats() {
   const [stats, setStats] = useState({

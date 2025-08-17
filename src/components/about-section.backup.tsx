@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
 import { 
   ArrowRight, 
   Building2, 
@@ -24,8 +24,8 @@ import {
   Shield
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '../lib/utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 const MotionDiv = motion.div;
 const MotionImage = motion(Image);

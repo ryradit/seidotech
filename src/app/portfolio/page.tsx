@@ -1,12 +1,12 @@
 
 'use client';
 import './portfolio.css';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
+import { Header } from '../../components/header';
+import { Footer } from '../../components/footer';
 import Image from 'next/image';
-import { Card, CardContent, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription } from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
+import { Button } from '../../components/ui/button';
 import { 
   Building, 
   Loader2, 
@@ -18,11 +18,11 @@ import {
   MapPin,
   X
 } from 'lucide-react';
-import { FadeIn } from '@/components/ui/fade-in';
+import { FadeIn } from '../../components/ui/fade-in';
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
-import { Separator } from '@/components/ui/separator';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { supabase } from '../../lib/supabase';
+import { Separator } from '../../components/ui/separator';
+import { Dialog, DialogContent } from '../../components/ui/dialog';
 
 interface Project {
   id: string;

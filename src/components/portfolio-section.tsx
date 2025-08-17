@@ -2,15 +2,15 @@
 'use client';
 
 import Image from 'next/image';
-import { Card, CardContent, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription } from './ui/card';
+import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { LampContainer } from './ui/lamp';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '../lib/supabase';
 
 interface Project {
   id: string;

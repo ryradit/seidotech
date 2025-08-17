@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { recordPageView } from "@/lib/page-views";
+import { recordPageView } from "../lib/page-views";
 
 export function PageViewTracker() {
   const pathname = usePathname();

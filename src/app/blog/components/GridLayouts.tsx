@@ -1,4 +1,4 @@
-import { type Post } from '@/lib/blog';
+import { type Post } from '../../../lib/blog';
 import { FeaturedPost } from './FeaturedPost';
 
 interface GridLayoutProps {

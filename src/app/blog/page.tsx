@@ -1,14 +1,14 @@
 import { cookies } from "next/headers"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-import { type Post } from "@/lib/blog"
+import { type Post } from "../../lib/blog"
 import { PostListItem } from "./components/PostListItem"
 import { GridLayout } from "./components/GridLayouts"
 import { Pagination } from "./components/Pagination"
-import { Badge } from "@/components/ui/badge"
-import { POST_CATEGORIES } from "@/lib/constants"
-import { cn } from "@/lib/utils"
+import { Badge } from "../../components/ui/badge"
+import { POST_CATEGORIES } from "../../lib/constants"
+import { cn } from "../../lib/utils"
 import Link from "next/link"
-import { Footer } from "@/components/footer"
+import { Footer } from "../../components/footer"
 
 // Force dynamic rendering for real-time data
 export const revalidate = 0

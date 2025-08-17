@@ -1,14 +1,14 @@
 'use client'
 
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
+import { Header } from '../../components/header'
+import { Footer } from '../../components/footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '../../components/ui/button'
 import { CheckCircle, Building, Users, Target, Info, Package, Truck } from 'lucide-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { FadeIn } from '@/components/ui/fade-in'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
+import { FadeIn } from '../../components/ui/fade-in'
 
 export default function TentangKamiPage() {
   return (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { type CarouselApi } from '@/components/ui/carousel';
+import { type CarouselApi } from '../../../components/ui/carousel';
 
 export function useCarouselAutoplay(api: CarouselApi | null) {
   const autoplayRef = useRef<NodeJS.Timeout>();
