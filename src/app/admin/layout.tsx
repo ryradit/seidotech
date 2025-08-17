@@ -1,11 +1,11 @@
 
 'use client';
 
-import { useAuth } from '@/hooks/use-auth';
-import { ProtectedRoute } from '@/components/protected-route';
-import { AdminNavbar } from '@/components/admin/admin-navbar';
-import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { useAuth } from '../../hooks/use-auth';
+import { ProtectedRoute } from '../../components/protected-route';
+import { AdminNavbar } from '../../components/admin/admin-navbar';
+import { SidebarProvider, SidebarTrigger, SidebarInset } from '../../components/ui/sidebar';
+import { TooltipProvider } from '../../components/ui/tooltip';
 import { usePathname } from 'next/navigation';
 
 function AdminLayoutContent({ children }: { children: React.ReactNode }) {
