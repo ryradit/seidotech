@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Post, getAllPosts, deletePost } from '@/lib/blog';
-import { Button } from '@/components/ui/button';
+import { Post, getAllPosts, deletePost } from '../../../lib/blog';
+import { Button } from '../../../components/ui/button';
 import {
   Table,
   TableBody,
@@ -10,8 +10,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { formatDate } from '@/lib/utils';
+} from '../../../components/ui/table';
+import { formatDate } from '../../../lib/utils';
 import Link from 'next/link';
 import { PenIcon, PlusIcon, Trash2Icon } from 'lucide-react';
 import { toast } from 'sonner';
@@ -24,7 +24,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
+} from '../../../components/ui/alert-dialog';
 
 export default function BlogAdminPage() {
   const [posts, setPosts] = useState<Post[]>([]);
