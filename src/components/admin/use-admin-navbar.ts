@@ -55,6 +55,12 @@ export function useAdminNavbar() {
         href: '/admin/pesan-masuk',
         isActive: isActive('/admin/pesan-masuk'),
         badge: messages > 0 ? messages.toString() : null
+      },
+      {
+        title: 'Blog',
+        href: '/admin/blog',
+        isActive: isActive('/admin/blog'),
+        badge: null
       }
     ];
 

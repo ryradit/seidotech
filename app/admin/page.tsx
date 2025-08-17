@@ -1,17 +1,19 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clock, MessageSquare, ArrowRight, Briefcase, Handshake } from 'lucide-react';
+import { Clock, MessageSquare, ArrowRight, Briefcase, Handshake, Users } from 'lucide-react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { getTotalPageViews } from '@/lib/page-views';
 
 export default function AdminDashboard() {
   const [unreadMessages, setUnreadMessages] = useState(0);
   const [recentMessages, setRecentMessages] = useState<any[]>([]);
   const [portfolioCount, setPortfolioCount] = useState(0);
   const [mitraCount, setMitraCount] = useState(0);
+  const [visitorCount, setVisitorCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [greeting, setGreeting] = useState("");
   
@@ -57,11 +59,15 @@ export default function AdminDashboard() {
           .select('*', { count: 'exact', head: true });
           
         if (totalMessagesError) throw totalMessagesError;
+
+        // Get total visitor count
+        const totalVisitors = await getTotalPageViews();
         
         setUnreadMessages(unreadCount || 0);
         setRecentMessages(recentData || []);
         setPortfolioCount(portfolioCount || 0);
         setMitraCount(mitraCount || 0);
+        setVisitorCount(totalVisitors);
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
       } finally {
@@ -244,6 +250,24 @@ export default function AdminDashboard() {
                     </Link>
                   </Button>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Visitor Stats */}
+            <Card className="border border-border/40 shadow-sm">
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-lg font-semibold">Pengunjung</CardTitle>
+                <Users className="h-5 w-5 text-blue-500" />
+              </CardHeader>
+              <CardContent>
+                {isLoading ? (
+                  <div className="h-8 bg-gray-200 rounded animate-pulse w-16 mb-1"></div>
+                ) : (
+                  <div className="text-3xl font-bold">{visitorCount}</div>
+                )}
+                <p className="text-xs text-muted-foreground mt-1">
+                  Total kunjungan website
+                </p>
               </CardContent>
             </Card>
           </div>

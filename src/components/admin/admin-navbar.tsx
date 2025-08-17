@@ -57,7 +57,8 @@ const iconMap = {
   BarChart3,
   FileText,
   Bell,
-  HelpCircle
+  HelpCircle,
+  Blog: FileText
 };
 
 export function AdminNavbar({ className }: AdminNavbarProps) {
@@ -129,6 +130,7 @@ export function AdminNavbar({ className }: AdminNavbarProps) {
                                            item.title === 'Portfolio' ? 'Briefcase' :
                                            item.title === 'Mitra' ? 'Handshake' :
                                            item.title === 'Pesan Masuk' ? 'MessageSquare' :
+                                           item.title === 'Blog' ? 'Blog' :
                                            item.title === 'Analytics' ? 'BarChart3' :
                                            item.title === 'Users' ? 'Users' :
                                            item.title === 'Reports' ? 'FileText' :

@@ -7,6 +7,8 @@ import { Toaster as SonnerToaster } from "sonner";
 import { Chatbot } from '@/components/chatbot';
 import { AuthProvider } from '@/hooks/use-auth';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { recordPageView } from '@/lib/page-views';
 
 // Hapus metadata dari sini karena akan dikelola di komponen
 // export const metadata: Metadata = {
@@ -20,6 +22,13 @@ import { usePathname } from 'next/navigation';
 function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdminPage = pathname.startsWith('/admin');
+
+  useEffect(() => {
+    // Only record for non-admin pages
+    if (!isAdminPage) {
+      recordPageView(window.location.pathname);
+    }
+  }, [pathname, isAdminPage]);
 
   return (
     <>

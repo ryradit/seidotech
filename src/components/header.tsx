@@ -38,6 +38,9 @@ export function Header() {
           <Link href="/portfolio" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
             Portofolio
           </Link>
+           <Link href="/blog" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
+            Blog
+          </Link>
            <Link href="/kontak" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
             Kontak
           </Link>
@@ -73,6 +76,7 @@ export function Header() {
                     <Link href="/tentang-kami" className="block rounded-lg px-3 py-2 hover:bg-accent" prefetch={false}>Tentang Kami</Link>
                     <Link href="/layanan" className="block rounded-lg px-3 py-2 hover:bg-accent" prefetch={false}>Layanan</Link>
                     <Link href="/portfolio" className="block rounded-lg px-3 py-2 hover:bg-accent" prefetch={false}>Portofolio</Link>
+                    <Link href="/blog" className="block rounded-lg px-3 py-2 hover:bg-accent" prefetch={false}>Blog</Link>
                     <Link href="/kontak" className="block rounded-lg px-3 py-2 hover:bg-accent" prefetch={false}>Kontak</Link>
                     {user ? (
                        <>

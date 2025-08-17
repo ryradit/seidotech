@@ -24,14 +24,32 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signInWithPassword({ 
+        email, 
+        password 
+      });
+      
       if (error) throw error;
+      
+      // Ensure we have a session
+      if (!data?.session) {
+        throw new Error('No session created');
+      }
+
+      // Set the auth cookie
+      await supabase.auth.setSession({
+        access_token: data.session.access_token,
+        refresh_token: data.session.refresh_token
+      });
+
       router.push('/admin');
+      router.refresh(); // Refresh to update auth state
     } catch (error: any) {
+      console.error('Login error:', error);
       toast({
         variant: 'destructive',
         title: 'Login Gagal',
-        description: 'Email atau password salah.',
+        description: error.message || 'Email atau password salah.',
       });
     } finally {
       setLoading(false);

@@ -3,6 +3,7 @@
 
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { FloatingChatButton } from '@/components/chat/floating-chat-button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Mail, Building2, MessageSquare, Loader2 } from 'lucide-react';
 import Link from 'next/link';
@@ -338,6 +339,7 @@ export default function KontakPage() {
 
       </main>
       <Footer />
+      <FloatingChatButton />
     </div>
   );
 }
