@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock } from 'lucide-react';
-import { type Post } from '@/lib/blog';
-import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
-import { POST_CATEGORIES } from '@/lib/constants';
+import { type Post } from '../../../lib/blog';
+import { cn } from '../../../lib/utils';
+import { Badge } from '../../../components/ui/badge';
+import { POST_CATEGORIES } from '../../../lib/constants';
 
 interface FeaturedPostProps {
   post: Post;
