@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
+import { Button } from '../../../../components/ui/button';
+import { Textarea } from '../../../../components/ui/textarea';
+import { Input } from '../../../../components/ui/input';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '../../../../components/ui/use-toast';
 import { formatDistance } from 'date-fns';
 import { id } from 'date-fns/locale';
 

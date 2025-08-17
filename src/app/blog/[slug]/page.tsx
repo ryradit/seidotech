@@ -1,12 +1,12 @@
-import { getPostBySlug, getAllPosts } from '@/lib/blog';
-import { formatDate } from '@/lib/utils';
+import { getPostBySlug, getAllPosts } from '../../../lib/blog';
+import { formatDate } from '../../../lib/utils';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { CalendarIcon, ChevronLeft, User, Clock } from 'lucide-react';
 import CommentSection from './components/CommentSection';
-import { Button } from '@/components/ui/button';
+import { Button } from '../../../components/ui/button';
 import ReadingProgress from './components/ReadingProgress';
 import styles from './styles.module.css';
 import ShareButtons from './components/ShareButtons';

@@ -2,12 +2,12 @@
 'use client';
 
 import Link from 'next/link';
-import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
+import { Sheet, SheetTrigger, SheetContent } from './ui/sheet';
+import { Button } from './ui/button';
 import { Menu, Shield, LogOut } from 'lucide-react';
 import Image from 'next/image';
-import { useAuth } from '@/hooks/use-auth';
-import { supabase } from '@/lib/supabase';
+import { useAuth } from '../hooks/use-auth';
+import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/navigation';
 
 export function Header() {

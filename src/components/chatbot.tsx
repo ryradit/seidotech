@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from './ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from './ui/card';
+import { Input } from './ui/input';
+import { ScrollArea } from './ui/scroll-area';
 import { MessageCircle, Bot, Send, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { chat, ChatInput } from '@/ai/flows/customer-service-flow';
+import { chat, ChatInput } from '../ai/flows/customer-service-flow';
 
 type Message = {
   role: 'user' | 'model';

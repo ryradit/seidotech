@@ -7,7 +7,7 @@
  * - ChatOutput - The return type for the chat function.
  */
 
-import {ai} from '@/ai/genkit';
+import {ai} from '../genkit';
 import {z} from 'genkit';
 
 const ChatInputSchema = z.object({
