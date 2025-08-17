@@ -26,15 +26,15 @@ import {
   Palette,
 } from 'lucide-react';
 import tinycolor from 'tinycolor2';
-import { Button } from '@/components/ui/button';
-import { Toggle } from '@/components/ui/toggle';
+import { Button } from '../../../../components/ui/button';
+import { Toggle } from '../../../../components/ui/toggle';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+} from '../../../../components/ui/popover';
+import { Input } from '../../../../components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../../components/ui/select';
 import { useState } from 'react';
 
 interface RichTextEditorProps {
